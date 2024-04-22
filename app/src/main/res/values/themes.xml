@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PA1" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/black</item>
+    </style>
+
+    <style name="Theme.PA1" parent="Base.Theme.PA1" />
+
+    <style name="Theme.PA1.CharTextStyle">
+        <item name="android:textSize">@dimen/text_size_30</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".MainActivity"
+    tools:theme="@style/Theme.PA1">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:title="@string/app_name"
+        android:titleTextColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_50"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:enabled="false"
+        android:layout_margin="@dimen/margin_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/guessInput"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_50"
+        android:hint="@string/wordle_hint"
+        android:enabled="false"
+        android:layout_margin="@dimen/margin_medium"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/submitBtn"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress"
+        android:layout_width="@dimen/size_50"
+        android:layout_height="@dimen/size_50"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/size_250"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/wordsRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_medium"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/guessInput"
+        app:layout_constraintBottom_toTopOf="@id/bottomGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_wordle"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/graysRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_small"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/bottomGuideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/verticalGuideline1"
+        tools:itemCount="6"
+        tools:listitem="@layout/item_wordle"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/yellowsRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_small"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/bottomGuideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/verticalGuideline1"
+        app:layout_constraintEnd_toStartOf="@id/verticalGuideline2"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_wordle"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/greensRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_small"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/bottomGuideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/verticalGuideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_wordle"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

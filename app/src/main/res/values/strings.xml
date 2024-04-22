@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PA1</string>
+
+    <string name="ready">Ready to start!</string>
+    <string name="wordle_hint">Wordle</string>
+    <string name="submit">Submit</string>
+    <string name="restart">Restart</string>
+    <string name="you_won">You won!</string>
+
+    <string name="load_error">Couldn\'t load word list! Try restarting the app.</string>
+    <string name="word_not_in_list_error">Word \'%s\' not in dictionary!</string>
+</resources>
