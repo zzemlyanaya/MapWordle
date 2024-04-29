@@ -26,7 +26,7 @@ class WordleController {
             guess.toCharArray().mapIndexed { index, char ->
                 CharUiModel(
                     char = char.toString(),
-                    state = checkChar(index, char)
+                    state = checkChar(index, char, guess.count { it == char })
                 )
             }
         )
@@ -37,7 +37,8 @@ class WordleController {
         return if (guess == answer) WordleResult.WON.also { hasWon = true } else WordleResult.CONTINUE
     }
 
-    private fun checkChar(index: Int, char: Char) = when {
+    private fun checkChar(index: Int, char: Char, charCount: Int) = when {
+        answer.count { it == char } != charCount -> CharState.ABSENT
         char == answer[index] -> CharState.CORRECT
         answer.contains(char) -> CharState.WRONG_POSITION
         else -> CharState.ABSENT
@@ -56,10 +57,13 @@ class WordleController {
                     yellows.removeAll { checkHasChar(it.chars, char) }
                 }
                 CharState.WRONG_POSITION -> {
-                    if (checkHas(greens, char).not() && checkHas(yellows, char).not()) yellows.add(item)
+                    if (checkHas(yellows, char)) return
+
+                    yellows.add(item)
+                    grays.removeAll { checkHasChar(it.chars, char) }
                 }
                 CharState.ABSENT -> {
-                    if (checkHas(grays, char).not()) grays.add(item)
+                    if (checkHas(yellows, char).not() && checkHas(grays, char).not()) grays.add(item)
                 }
             }
         }
